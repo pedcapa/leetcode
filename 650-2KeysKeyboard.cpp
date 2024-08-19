@@ -1,8 +1,8 @@
 #include <iostream>
 
-int miniSteps(int n);
+int minSteps(int n);
 
-int miniSteps(int n)
+int minSteps(int n)
 {
   // caso base
   if (n == 1) return 0;
