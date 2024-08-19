@@ -1,7 +1,7 @@
 #include <iostream>
 
 int solve(int n, int k, int val);
-int miniSteps(int n);
+int minSteps(int n);
 
 int solve(int n, int k, int val)
 {
@@ -10,7 +10,7 @@ int solve(int n, int k, int val)
   return 1 + solve(n, k + val, val);
 }
 
-int miniSteps(int n)
+int minSteps(int n)
 {
   return solve(n, 1, 1);
 }
@@ -20,7 +20,7 @@ int main()
   int n;
   std::cin >> n;
 
-  std::cout << miniSteps(n) << std::endl;
+  std::cout << minSteps(n) << std::endl;
 
   return 0;
 }
