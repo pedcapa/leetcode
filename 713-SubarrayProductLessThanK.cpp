@@ -1,33 +1,23 @@
 class Solution {
-/*
-713. Subarray Producct Less Than K
-
-- given an array of integers `nums` and an integer `k`
-- return the number of contiguos subarrays where the product of all the elements in the subarray
-is strictly less than `k`
-
-intuition -> SLIDING WINDOW
-*/
 public:
     int numSubarrayProductLessThanK(vector<int>& nums, int k) {
-        if (k <= 1) return k;
-        int left = 0, right = 0;
-        int n = nums.size();
-        int mul = 1;
-        int ans = 0;
-        while (right < n)
-        {
-            cout << left << ' ' << right << '\n';
-            mul *= nums[right];
-            while (mul >=k && left <n)
-            {
-                ans += right - left;
-                mul /= nums[left];
-                left++;
-            }
-            right++;
+        if(k==0 || k==1){
+            return 0;
         }
-
-        return ans + (right - left) * (right - left + 1) / 2;
+        int i=0, j=0;
+        int n=nums.size();
+        int product=nums[0], ans=0;
+        nums.push_back(1);
+        while(j<n){
+            if(product<k){
+                product*=nums[++j];
+            }
+            else{
+                ans+=j-i;
+                product/=nums[i++];
+            }
+        }
+        ans+=(j-i)*(j-i+1)/2;
+        return ans;
     }
 };
